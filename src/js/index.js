@@ -2,13 +2,28 @@
 // url : https://api.themoviedb.org/3
 // https://api.themoviedb.org/3/search/movie?api_key=a6730432ddfd8926e4cf3d396ae5b3c0&language=en-US&query=abc&page=1&include_adult=false
 
-async function getResults(keyword) {
-    const api_key = "a6730432ddfd8926e4cf3d396ae5b3c0";
-    const base_url = "https://api.themoviedb.org/3"
 
-    const response = await fetch(`${base_url}/search/movie?api_key=${api_key}&page=1&query=${keyword}`);
-    const data = await response.json();
-    console.log(data.results);
+import Search from './models/Search';
+
+const state = {};
+
+const searchController = async () => {
+    const keyword = document.getElementById('txt-keyword').value;
+
+    if (keyword) {
+        state.search = new Search(keyword);
+
+        await state.search.getResults();
+
+        console.log(state.search.data);
+
+    }else {
+        alert('You must enter a keyword');
+    }
 }
 
-getResults('abc');
+document.getElementById('form-search').addEventListener('submit', function(e) {
+    e.preventDefault();
+    searchController();
+    console.log("form submitted");
+})
