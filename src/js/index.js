@@ -4,25 +4,31 @@
 
 
 import Search from './models/Search';
+import {elements} from './base';
+import * as searchView from './views/searchView';
+
 
 const state = {};
 
 const searchController = async () => {
-    const keyword = document.getElementById('txt-keyword').value;
+    const keyword = elements.searchInput.value;
 
     if (keyword) {
         state.search = new Search(keyword);
 
         await state.search.getResults();
 
-        console.log(state.search.data);
+        searchView.clearInput();
+        searchView.clearResults();
+
+        searchView.displayResults(state.search.data);
 
     }else {
         alert('You must enter a keyword');
     }
 }
 
-document.getElementById('form-search').addEventListener('submit', function(e) {
+elements.searchForm.addEventListener('submit', function(e) {
     e.preventDefault();
     searchController();
     console.log("form submitted");
