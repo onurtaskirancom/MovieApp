@@ -5,10 +5,9 @@ export class Movie {
         this.id = id;
     }
 
-    async GetMovie() {
+    async getMovie() {
         const response = await fetch(`${base_url}/movie/${this.id}?api_key=${api_key}`);
         this.data = await response.json();
-        console.log(this.data);
     }
 
 }
