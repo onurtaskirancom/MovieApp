@@ -10,6 +10,8 @@ import * as searchView from './views/searchView';
 
 const state = {};
 
+//search controller
+
 const searchController = async () => {
     const keyword = elements.searchInput.value;
 
@@ -32,4 +34,11 @@ elements.searchForm.addEventListener('submit', function(e) {
     e.preventDefault();
     searchController();
     console.log("form submitted");
-})
+});
+
+
+// movie controller
+
+const movie  = new Movie(649087);
+movie.GetMovie();
+console.log(movie);
