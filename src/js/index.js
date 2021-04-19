@@ -6,6 +6,7 @@
 import Search from './models/Search';
 import {elements} from './base';
 import * as searchView from './views/searchView';
+import * as movieView from './views/movieView';
 import { Movie } from './models/Movie';
 
 
@@ -48,7 +49,8 @@ const movieController = async () => {
 
         await state.movie.getMovie();
 
-        console.log(state.movie);
+        movieView.displayMovie(state.movie.data);
+        movieView.backToTop();
     }
 };
 
