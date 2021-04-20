@@ -1,7 +1,11 @@
 import {elements} from '../base';
 
 export const backToTop = () => {
-    window.scrollTo({top:0,behavior:'smooth'});
+    window.scrollTo({top:0, behavior:'smooth'});
+}
+
+export const closeDetails = () => {
+    elements.movieDetailsContainer.classList.remove('d-block');
 }
 
 export const displayMovie = movie => {
@@ -24,7 +28,7 @@ export const displayMovie = movie => {
                 <h5>${movie.original_title}</h5>
                 <p>${movie.overview}</p>
                 <p><small class="badge badge-primary">${movie.vote_average}</small></p>
-                <bh>
+                <hr>
                 ${genres}
             </div>
         </div>   
@@ -33,7 +37,7 @@ export const displayMovie = movie => {
     html += '</div>';
 
 
-    elements.movieDetailslContainer.classList.add('d-block');
+    elements.movieDetailsContainer.classList.add('d-block');
     elements.movieDetails.innerHTML = html;
 
 };

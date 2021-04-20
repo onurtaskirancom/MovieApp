@@ -26,7 +26,7 @@ const searchController = async () => {
         searchView.clearInput();
         searchView.clearResults();
 
-        searchView.displayResults(state.search.data);
+        searchView.displayResults(keyword, state.search.data);
 
     }else {
         alert('You must enter a keyword');
@@ -55,3 +55,4 @@ const movieController = async () => {
 };
 
 window.addEventListener('hashchange', movieController);
+elements.movieDetailsClose.addEventListener('click', movieView.closeDetails);

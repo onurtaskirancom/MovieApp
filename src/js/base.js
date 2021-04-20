@@ -1,10 +1,13 @@
 export const elements = {
     searchForm: document.getElementById('form-search'),
     searchInput: document.getElementById('txt-keyword'),
+    movieListHeader: document.getElementById('movie-list-header'),
     movieList: document.getElementById('movie-list'),
     movieListContainer: document.getElementById('movie-list-container'),
     movieDetails: document.getElementById('movie-details'),
-    movieDetailslContainer: document.getElementById('movie-details-container')
+    movieDetailsContainer: document.getElementById('movie-details-container'),
+    movieDetailsClose: document.getElementById('movie-details-close'),
+    
 }
 
 export const image_sizes = {
