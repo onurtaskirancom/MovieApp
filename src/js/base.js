@@ -10,6 +10,17 @@ export const elements = {
     
 }
 
+export const renderLoader = parent => {
+  const loader = `<div class="nb-spinner></div>`;
+  parent.insertAdjacentHTML('beforebegin', loader);
+}
+
+export const clearLoader = parent => {
+  const loader = parent.previosSibling;
+  if(loader)
+    loader.parentNode.remoceChild(loader);
+}
+
 export const image_sizes = {
     backdrop_sizes: [
         "w300",

@@ -4,7 +4,7 @@
 
 
 import Search from './models/Search';
-import {elements} from './base';
+import {elements,renderLoader,clearLoader} from './base';
 import * as searchView from './views/searchView';
 import * as movieView from './views/movieView';
 import { Movie } from './models/Movie';
@@ -21,12 +21,14 @@ const searchController = async () => {
     if (keyword) {
         state.search = new Search(keyword);
 
-        await state.search.getResults();
-
         searchView.clearInput();
         searchView.clearResults();
 
+        renderLoader(elements.movieListContainer);
+
+        await state.search.getResults();
         searchView.displayResults(keyword, state.search.data);
+        setTimeout(()=> { clearLoader(elements.movieListContainer);  }, 1000);       
 
     }else {
         alert('You must enter a keyword');
@@ -47,10 +49,12 @@ const movieController = async () => {
     if(id) {
         state.movie = new Movie(id);
 
-        await state.movie.getMovie();
+        renderLoader(elements.movieDetailsContainer);
 
-        movieView.displayMovie(state.movie.data);
+        await state.movie.getMovie();
         movieView.backToTop();
+        movieView.displayMovie(state.movie.data);
+        setTimeout(()=> { clearLoader(elements.movieDetailsContainer);  }, 1000);  
     }
 };
 
